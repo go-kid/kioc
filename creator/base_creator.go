@@ -3,8 +3,8 @@ package creator
 import (
 	"errors"
 	"fmt"
-	"github.com/go-kid/ioc/cmd/kioc/tpl"
-	"github.com/go-kid/ioc/cmd/kioc/util"
+	"github.com/go-kid/kioc/tpl"
+	"github.com/go-kid/kioc/util"
 	"os"
 	"path/filepath"
 )

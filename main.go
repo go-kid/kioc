@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/go-kid/ioc/cmd/kioc/cmd"
+	"github.com/go-kid/kioc/cmd"
 )
 
 func main() {

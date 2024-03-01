@@ -1,8 +1,8 @@
 package scan
 
 import (
-	"github.com/go-kid/ioc/cmd/kioc/creator"
-	"github.com/go-kid/ioc/cmd/kioc/util"
+	"github.com/go-kid/kioc/creator"
+	"github.com/go-kid/kioc/util"
 	"github.com/samber/lo"
 	"github.com/spf13/cobra"
 	"go/ast"

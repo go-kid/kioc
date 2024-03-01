@@ -1,4 +1,4 @@
-module github.com/go-kid/ioc/cmd/kioc
+module github.com/go-kid/kioc
 
 go 1.20
 

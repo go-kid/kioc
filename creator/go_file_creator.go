@@ -2,7 +2,8 @@ package creator
 
 import (
 	"fmt"
-	"github.com/go-kid/ioc/cmd/kioc/util"
+	"github.com/go-kid/kioc/util"
+	"github.com/stoewer/go-strcase"
 	"path/filepath"
 )
 

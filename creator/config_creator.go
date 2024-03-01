@@ -1,7 +1,10 @@
 package creator
 
 import (
-	"github.com/go-kid/ioc/cmd/kioc/util"
+	"github.com/go-kid/kioc/util"
+	"github.com/go-kid/kioc/util/config_merge"
+	"github.com/go-kid/kioc/util/properties"
+	"gopkg.in/yaml.v3"
 	"os"
 	"path/filepath"
 	"strings"

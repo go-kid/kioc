@@ -1,7 +1,7 @@
 package cmd
 
 import (
-	"github.com/go-kid/ioc/cmd/kioc/cmd/scan"
+	"github.com/go-kid/kioc/cmd/scan"
 	"github.com/spf13/cobra"
 )
 
