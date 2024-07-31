@@ -125,13 +125,16 @@ func analyseFile(path string) (registers []*Register, err error) {
 	return
 }
 
-func analyseToken(f *ast.File) (registers []*Register, err error) {
-	//ast.Print(fset, f)
-
+var registerCommentMatch = func() *regexp.Regexp {
 	registerCommentMatch, err := regexp.Compile("//\\s*\\S+\\s+@\\S+")
 	if err != nil {
-		return nil, err
+		panic(err)
 	}
+	return registerCommentMatch
+}()
+
+func analyseToken(f *ast.File) (registers []*Register, err error) {
+	//ast.Print(fset, f)
 
 	ast.Inspect(f, func(node ast.Node) bool {
 		if comment, ok := node.(*ast.Comment); ok &&
@@ -142,7 +145,7 @@ func analyseToken(f *ast.File) (registers []*Register, err error) {
 			name, group := strings.TrimPrefix(arr[0], "//"), arr[1]
 			var kind string
 			ast.Inspect(f, func(node ast.Node) bool {
-				if id, ok := node.(*ast.Ident); ok && id.Name == name {
+				if id, ok := node.(*ast.Ident); ok && id.Name == name && id.Obj != nil {
 					kind = id.Obj.Kind.String()
 					return false
 				}

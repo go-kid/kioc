@@ -1,6 +1,7 @@
 package scan
 
 import (
+	"fmt"
 	"github.com/stretchr/testify/assert"
 	"go/ast"
 	"go/parser"
@@ -14,9 +15,13 @@ var testFile = `package test
 type Starter struct {
 }
 
-// NewStarter @Component
-func NewStarter() *Starter {
+// New @Component
+func New() *Starter {
 	return &Starter{}
+}
+
+func main() {
+	err:=errors.New()
 }
 `
 
@@ -27,8 +32,14 @@ func Test_analyseFile(t *testing.T) {
 	assert.NoError(t, err)
 	registers, err := analyseToken(f)
 	assert.NoError(t, err)
+	fmt.Println(registers[1])
 	assert.Equal(t, "Starter", registers[0].Name)
 	assert.Equal(t, "Component", registers[0].Group)
 	assert.Equal(t, "type", registers[0].Kind)
 	assert.Equal(t, "test", registers[0].Pkg)
+
+	assert.Equal(t, "New", registers[1].Name)
+	assert.Equal(t, "Component", registers[1].Group)
+	assert.Equal(t, "func", registers[1].Kind)
+	assert.Equal(t, "test", registers[1].Pkg)
 }
