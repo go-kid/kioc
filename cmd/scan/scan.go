@@ -76,6 +76,8 @@ func scan(cmd *cobra.Command, args []string) {
 		f := creator.NewGoFile("register", outputDirArg, "scan_"+group, false)
 		imports := lo.Map(registers, func(item *Register, index int) string {
 			importPath := filepath.Join(mod, item.Path)
+			importPath = strings.ReplaceAll(importPath, "\\", "/")
+			importPath = strings.Trim(importPath, "/")
 			if len(replaceRules) > 0 {
 				for _, rule := range replaceRules {
 					importPath = strings.ReplaceAll(importPath, rule[0], rule[1])
